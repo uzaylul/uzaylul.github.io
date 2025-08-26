@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>uzaylul — Link in Bio</title>
+  <meta name="description" content="En havalı içerik üreticisi için yaratıcı, modern, uzay esintili link in bio sayfası" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0e12;            /* uzay koyusu */
+      --card: rgba(255,255,255,.04);
+      --text:#e8ecf1;          /* yüksek kontrast beyaz */
+      --muted:#9aa7b4;         /* ikincil metin */
+      --ring:#8ab4ff;          /* odak halkası */
+      --btn:#161c24;           /* buton zemini */
+      --btn-border: rgba(255,255,255,.12);
+      --yt:#ff5a5f;            /* YouTube aksanı (yumuşak kırmızı) */
+      --ig1:#ff8a00;           /* Instagram degrade 1 */
+      --ig2:#e52e71;           /* Instagram degrade 2 */
+      --tt:#2ad6ff;            /* TikTok aksanı (yumuşak camgöbeği) */
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background: var(--bg); color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height:1.5;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    }
+
+    .space-bg{
+      position:fixed; inset:0; pointer-events:none; z-index:-2;
+      background:
+        radial-gradient(1200px 800px at 10% 20%, rgba(88,101,242,.08), transparent 60%),
+        radial-gradient(900px 700px at 80% 30%, rgba(42,214,255,.07), transparent 60%),
+        radial-gradient(700px 600px at 30% 80%, rgba(229,46,113,.06), transparent 60%),
+        #0b0e12;
+    }
+    .stars, .stars::after{
+      position:fixed; inset:0; content:""; z-index:-1; pointer-events:none;
+      background-image: 
+        radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.45) 50%, transparent 51%),
+        radial-gradient(1.2px 1.2px at 70% 60%, rgba(255,255,255,.4) 50%, transparent 51%),
+        radial-gradient(0.9px 0.9px at 40% 80%, rgba(255,255,255,.35) 50%, transparent 51%),
+        radial-gradient(1px 1px at 85% 20%, rgba(255,255,255,.3) 50%, transparent 51%);
+      animation: twinkle 6s ease-in-out infinite alternate;
+      opacity:.25;
+    }
+    .stars::after{filter: blur(0.5px); opacity:.15;}
+    @keyframes twinkle{from{opacity:.15} to{opacity:.3}}
+
+    .wrap{min-height:100%; display:grid; place-items:center; padding:48px 18px}
+
+    .card{
+      width: min(620px, 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--btn-border);
+      border-radius:28px; padding:28px; backdrop-filter:saturate(120%) blur(8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px rgba(255,255,255,.06);
+    }
+
+    .title{font-family:"Space Grotesk", Inter, system-ui, sans-serif; font-weight:600; letter-spacing:.2px;}
+    .title .name{font-size: clamp(34px, 6.5vw, 48px); display:block;}
+    .title .tag{display:block; margin-top:6px; color:var(--muted); font-size:clamp(14px, 2.8vw, 16px)}
+
+    .links{margin-top:22px; display:grid; gap:14px}
+
+    .btn{
+      display:flex; align-items:center; gap:12px;
+      width:100%; padding:16px 18px; border-radius:16px;
+      background: var(--btn); border:1px solid var(--btn-border);
+      color:var(--text); text-decoration:none; font-weight:600;
+      letter-spacing:.2px; position:relative; isolation:isolate;
+      transition: transform .12s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+      min-height:56px;
+    }
+    .btn:focus-visible{outline: none; box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 50%, transparent);}
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.22)}
+
+    .btn .icon{flex:0 0 auto; width:24px; height:24px; opacity:.92}
+    .btn .label{flex:1; font-size:18px}
+    .btn .handle{font-weight:400; color:var(--muted); font-size:15px}
+
+    .btn.yt{box-shadow: 0 6px 16px rgba(255,90,95,.08)}
+    .btn.yt::after{content:""; position:absolute; inset:0; border-radius:inherit; z-index:-1;
+      background: radial-gradient(80% 120% at 10% 100%, rgba(255,90,95,.18), transparent 60%);
+    }
+
+    .btn.ig{box-shadow: 0 6px 18px rgba(229,46,113,.08)}
+    .btn.ig::after{content:""; position:absolute; inset:0; border-radius:inherit; z-index:-1;
+      background: linear-gradient(135deg, color-mix(in oklab, var(--ig1) 30%, transparent), color-mix(in oklab, var(--ig2) 24%, transparent)); opacity:.45;
+      mask: linear-gradient(#0006, transparent 70%);
+    }
+
+    .btn.tt{box-shadow: 0 6px 16px rgba(42,214,255,.08)}
+    .btn.tt::after{content:""; position:absolute; inset:0; border-radius:inherit; z-index:-1;
+      background: radial-gradient(70% 120% at 90% 0%, rgba(42,214,255,.16), transparent 55%);
+    }
+
+    .foot{margin-top:22px; color:var(--muted); font-size:12.5px; text-align:center}
+
+    @media (prefers-reduced-motion: reduce){
+      .btn{transition:none}
+      .stars{animation:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="space-bg"></div>
+  <div class="stars"></div>
+
+  <main class="wrap">
+    <section class="card" role="region" aria-label="Link in bio">
+      <header class="title" aria-live="polite">
+        <span class="name">uzaylul</span>
+        <span class="tag">En havalı içerik üreticisi.</span>
+      </header>
+
+      <nav class="links" aria-label="Sosyal bağlantılar">
+        <a class="btn yt" href="https://youtube.com/@uzaylul" aria-label="YouTube @uzaylul" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a4 4 0 0 0-2.8-2.8C18.9 3 12 3 12 3s-6.9 0-8.7.4A4 4 0 0 0 .5 6.2C.1 8 0 10.2 0 12s.1 4 .5 5.8a4 4 0 0 0 2.8 2.8C5.1 21 12 21 12 21s6.9 0 8.7-.4a4 4 0 0 0 2.8-2.8c.4-1.8.5-4 .5-5.8s-.1-4-.5-5.8ZM9.6 15.5V8.5L15.9 12l-6.3 3.5Z"/></svg>
+          <span class="label">YouTube <span class="handle">@uzaylul</span></span>
+        </a>
+
+        <a class="btn ig" href="https://instagram.com/uzaylul" aria-label="Instagram uzaylul" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm5.75-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.75 6.5Z"/></svg>
+          <span class="label">Instagram <span class="handle">uzaylul</span></span>
+        </a>
+
+        <a class="btn tt" href="https://tiktok.com/@uzaylul" aria-label="TikTok @uzaylul" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.8 3.2c.9 1.4 2.2 2.5 3.8 3.1v3a9.1 9.1 0 0 1-4.1-1.2v6.9a6.3 6.3 0 1 1-5.3-6.2v3.1a3.3 3.3 0 1 0 2.2 3.1V2h3.4v1.2Z"/></svg>
+          <span class="label">TikTok <span class="handle">@uzaylul</span></span>
+        </a>
+      </nav>
+
+      <p class="foot">• mobil uyumlu • erişilebilir • minimal •</p>
+    </section>
+  </main>
+</body>
+</html>
